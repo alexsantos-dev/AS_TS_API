@@ -1,0 +1,30 @@
+{
+  "name": "as_ts_api",
+  "version": "1.0.0",
+  "description": "api for typescript tests",
+  "main": "src/server.js",
+  "type": "module",
+  "scripts": {
+    "start": "node --loader ts-node/esm --experimental-specifier-resolution=node --no-warnings src/server.ts",
+    "build": "tsc"
+  },
+  "keywords": [],
+  "author": "Alex Santos",
+  "license": "ISC",
+  "devDependencies": {
+    "@types/express": "^4.17.21",
+    "@types/node": "^20.12.7",
+    "@types/sequelize": "^4.28.20",
+    "jest": "^29.7.0",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.4.5"
+  },
+  "dependencies": {
+    "dotenv": "^16.4.5",
+    "express": "^4.19.2",
+    "sequelize": "^6.37.3",
+    "sequelize-typescript": "^2.1.6",
+    "sqlite": "^5.1.1",
+    "sqlite3": "^5.1.7"
+  }
+}
