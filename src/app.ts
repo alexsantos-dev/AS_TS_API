@@ -1,8 +1,8 @@
-import express from 'express'
+import express, { Application } from 'express'
 import UserRoutes from './routes/user/User.routes'
 import { configDotenv } from 'dotenv'
 
-const app = express()
+const app: Application = express()
 
 configDotenv()
 
