@@ -5,8 +5,8 @@ import UserServices from './User.services'
 describe('UserServices', () => {
     let createdUser: User
     const userFields = {
-        name: 'FLINGS',
-        email: 'flings@email.com'
+        name: 'teste',
+        email: 'teste@email.com'
     }
     beforeAll(async () => {
         await sequelize.sync()

@@ -1,4 +1,3 @@
-import { error } from 'console'
 import UserServices from '../../services/users/User.services'
 import { Request, Response } from 'express'
 
@@ -6,11 +5,10 @@ async function create(req: Request, res: Response) {
     try {
         const userData = req.body
         const newUser = await UserServices.create(userData)
-
-        if (newUser) {
-            res.status(200).json(newUser)
+        if (userData && newUser) {
+            res.status(200).json({ msg: 'User created', newUser })
         } else {
-            res.status(400).json({ error: 'Failed to create user' })
+            res.status(409).json({ err: 'Invalid fields' })
         }
     } catch (error: any) {
         res.status(500).json({ error: error.message })
@@ -23,7 +21,7 @@ async function findAll(req: Request, res: Response) {
         if (users) {
             res.status(200).json({ Users: users })
         } else {
-            res.status(404).json({ error: 'No users found' })
+            res.status(404).json({ err: 'No users found' })
         }
     } catch (error: any) {
         res.status(500).json({ error: error.message })
@@ -37,7 +35,7 @@ async function findOne(req: Request, res: Response) {
         if (user) {
             res.status(200).json({ User: user })
         } else {
-            res.status(404).json({ error: 'User not found' })
+            res.status(404).json({ err: 'User not found' })
         }
     } catch (error: any) {
         res.status(500).json({ error: error.message })
@@ -55,7 +53,7 @@ async function update(req: Request, res: Response) {
         if (isValidUpdate && updated) {
             res.status(200).json({ msg: 'User updated' })
         } else {
-            res.status(400).json({ error: 'Failed to update user' })
+            res.status(400).json({ err: 'Failed to update user' })
         }
 
     } catch (error: any) {
@@ -75,7 +73,7 @@ async function erase(req: Request, res: Response) {
                 res.status(200).json({ msg: 'User erased' })
             }
         } else {
-            res.status(404).json({ error: 'User not found' })
+            res.status(404).json({ err: 'User not found' })
         }
     } catch (error: any) {
         res.status(500).json({ error: error.message })

@@ -4,13 +4,9 @@ import { User, UserAttributes, UserCreationAttributes } from "../../models/user/
 async function create(userData: Omit<UserCreationAttributes, 'id'>): Promise<User | undefined> {
     try {
         const newUser = await User.create(userData)
-        if (newUser) {
-            return newUser
-        } else {
-            return undefined
-        }
+        return newUser
     } catch (error: any) {
-        console.error({ error: error })
+        console.error(error)
     }
 }
 
@@ -21,7 +17,7 @@ async function findAll() {
             return users
         }
     } catch (error: any) {
-        console.error({ error: error })
+        console.error(error)
     }
 }
 
@@ -32,7 +28,7 @@ async function findOne(id: Identifier) {
             return user
         }
     } catch (error: any) {
-        console.error({ error: error })
+        console.error(error)
     }
 }
 
@@ -47,7 +43,7 @@ async function update(id: Identifier, fields: Partial<UserAttributes>) {
             return updated
         }
     } catch (error: any) {
-        console.error({ error: error })
+        console.error(error)
     }
 }
 
@@ -62,7 +58,7 @@ async function erase(id: Identifier) {
             return user
         }
     } catch (error) {
-        console.error({ error: error })
+        console.error(error)
     }
 }
 
